@@ -173,30 +173,43 @@ class Arbol:
             actual = actual.derecho
         return actual
 
-arbol = Arbol()
-arbol.insertar(50)
-arbol.insertar(30)
-arbol.insertar(70)
-arbol.insertar(20)
-arbol.insertar(40)
-arbol.insertar(60)
-arbol.insertar(80)
 
-print("Árbol en InOrden:")
-arbol.inorden(arbol.raiz)
-print("\nPreOrden:")
-arbol.preorden(arbol.raiz)
-print("\nPostOrden:")
-arbol.postorden(arbol.raiz)
-print("\nRecorrido por niveles (amplitud):")
-arbol.recorrer_por_niveles()
+def menu():
+    arbol = Arbol()
+    while True:
+        print("\n--- MENÚ ---")
+        print("1. Insertar nodo")
+        print("2. Mostrar árbol (acostado)")
+        print("3. Buscar nodo")
+        print("4. Recorrido PreOrden")
+        print("5. Recorrido InOrden")
+        print("6. Recorrido PostOrden")
+        print("7. Recorrido por niveles")
+        print("8. Altura del árbol")
+        print("9. Contar hojas")
+        print("10. Contar nodos")
+        print("11. Eliminar nodo")
+        print("12. Eliminar predecesor")
+        print("13. Eliminar sucesor")
+        print("14. Verificar si es completo")
+        print("15. Verificar si es lleno")
+        print("16. Eliminar todo el árbol")
+        print("17. Salir")
 
-print("\nAltura del árbol:", arbol.altura(arbol.raiz))
-print("Cantidad de hojas:", arbol.contar_hojas(arbol.raiz))
-print("Cantidad de nodos:", arbol.contar_nodos(arbol.raiz))
+        opcion = int(input("Elige una opción: "))
 
-print("\n¿Es un árbol binario completo?", arbol.es_completo(arbol.raiz))
-print("¿Es un árbol binario lleno?", arbol.es_lleno(arbol.raiz))
+        if opcion == 17:
+            break
 
-arbol.eliminar_arbol()
-print("Árbol eliminado.")
+        elif opcion == 1:
+            valor = int(input("Valor del nodo: "))
+            arbol.insertar(valor)
+        elif opcion == 2:
+            arbol.graficar_arbol()
+        elif opcion == 3:
+            valor = int(input("Valor a buscar: "))
+            nodo = arbol.buscar(valor)
+            print("Nodo encontrado" if nodo else "Nodo no encontrado")
+        # Agrega aquí el resto de opciones...
+
+menu()
